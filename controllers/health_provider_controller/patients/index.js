@@ -31,7 +31,7 @@ exports.get_patient=async (req,res)=>{
 exports.add_patient=async (req,res)=>{
 
     try{
-        const { full_name, email, phone_number, health_condition }=req.fields;
+        const { full_name, email, phone_number, health_condition, date_of_birth, gender }=req.fields;
         const { id } = req.user;
         const user_exist = await Patients.findOne({email:email});
         const date=new Date();
@@ -48,6 +48,8 @@ exports.add_patient=async (req,res)=>{
             email:email,
             phone_number:phone_number,
             health_condition:health_condition,
+            date_of_birth:date_of_birth,
+            gender:gender,
             status:'active',
             verified:false,
             activation_code:activation_code,

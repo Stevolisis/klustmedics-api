@@ -29,7 +29,7 @@ exports.update_profile=async (req,res)=>{
             };
         }
         await Providers.updateOne({_id:id},{$set:provider_to_edit});
-        if(img_to_delete&&img_to_delete.public_id) await Mservice.deleteImage(img_to_delete.profile_img.public_id);
+        // if(img_to_delete&&img_to_delete.public_id) await Mservice.deleteImage(img_to_delete.profile_img.public_id);
 
         res.status(200).json({status:'success'});
 
