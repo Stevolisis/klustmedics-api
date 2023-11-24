@@ -61,20 +61,20 @@ app.get('/',(req,res)=>{
 });
 
 
-// app.get('/2',async(req,res)=>{
-// 	let name ="John Mike";
-// 	let email='john@gmail.com'
-// 	let passcode=38297;
+app.get('/2',async(req,res)=>{
+	let name ="John Mike";
+	let email='john@gmail.com'
+	let passcode=38297;
 	
-// 	try{
-// 	let emailTemplate=await ejs.renderFile("views/welcome1.ejs",{
-//         name: name,
-//         email: email,
-//         passcode: passcode
-// 	});
-// 	  res.send(emailTemplate);
-// 	}catch(err){
-// 	res.send('<h1>Error</h1>')
-// 	console.log(err)
-// 	}
-// });
+	try{
+	let emailTemplate=await ejs.renderFile("views/welcome1.ejs",{
+        name: name,
+        email: email,
+        passcode: passcode
+	});
+	  res.send(emailTemplate);
+	}catch(err){
+	res.send('<h1>Error</h1>')
+	console.log(err)
+	}
+});
