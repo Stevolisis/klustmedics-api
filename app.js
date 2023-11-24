@@ -4,7 +4,7 @@ require('dotenv').config();
 const mongoose=require('mongoose');
 const formidableMiddleware = require('express-formidable');
 const ejs=require("ejs");
-const health_auth_route=require('./Routes/health_provider_routes/auth');
+// const health_auth_route=require('./Routes/health_provider_routes/auth');
 // const provider_profile_route=require('./Routes/health_provider_routes/profile');
 // const patients_route=require('./Routes/health_provider_routes/patients');
 // const resources_route=require('./Routes/health_provider_routes/resources');
