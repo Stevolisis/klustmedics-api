@@ -4,14 +4,14 @@ require('dotenv').config();
 const mongoose=require('mongoose');
 const formidableMiddleware = require('express-formidable');
 const ejs=require("ejs");
-// const health_auth_route=require('./Routes/health_provider_routes/auth');
-// const provider_profile_route=require('./Routes/health_provider_routes/profile');
-// const patients_route=require('./Routes/health_provider_routes/patients');
-// const resources_route=require('./Routes/health_provider_routes/resources');
-// const patient_auth_route=require('./Routes/patient_routes/auth');
-// const patient_profile_route=require('./routes/patient_routes/profile')
-// const medication_route=require('./Routes/patient_routes/medication');
-// const review_route=require('./Routes/review_route/index');
+const health_auth_route=require('./Routes/health_provider_routes/auth');
+const provider_profile_route=require('./Routes/health_provider_routes/profile');
+const patients_route=require('./Routes/health_provider_routes/patients');
+const resources_route=require('./Routes/health_provider_routes/resources');
+const patient_auth_route=require('./Routes/patient_routes/auth');
+const patient_profile_route=require('./routes/patient_routes/profile')
+const medication_route=require('./Routes/patient_routes/medication');
+const review_route=require('./Routes/review_route/index');
 
 
 
