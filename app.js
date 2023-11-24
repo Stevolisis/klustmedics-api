@@ -36,10 +36,10 @@ app.set('view engine','ejs');
 
 
 
-// //mongodb connection
-// mongoose.set('strictQuery', true);
-// mongoose.connect(process.env.MONGO_URI)
-//   .then(() =>{
+//mongodb connection
+mongoose.set('strictQuery', true);
+mongoose.connect(process.env.MONGO_URI)
+  .then(() =>{
     app.listen(80,(err,res)=>{
         if(err){
             console.log('Error '+ err)
@@ -47,9 +47,9 @@ app.set('view engine','ejs');
             console.log('Connected Successfully')
         }
     });
-// }).catch(err=>{
-//     console.log(err.message);
-// });
+}).catch(err=>{
+    console.log(err.message);
+});
 
 
 
