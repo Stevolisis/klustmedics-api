@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors=require("cors");
 require('dotenv').config();
 const mongoose=require('mongoose');
 const formidableMiddleware = require('express-formidable');
@@ -13,7 +14,10 @@ const patient_profile_route=require('./routes/patient_routes/profile')
 const medication_route=require('./routes/patient_routes/medication');
 const review_route=require('./routes/review_route/index');
 
-
+app.use(cors({
+	origin:'*',
+	credentials:true
+}));
 
 app.use(formidableMiddleware({multiples: true}));
 app.use("/media",express.static('media'));
