@@ -12,7 +12,7 @@ function allowed_fields(req,res,next){
 }
 
 router.post('/update_profile',verifyUser,allowed_fields,update_profile);
-router.post('/get_provider',verifyUser,get_provider);
+router.get('/get_provider',verifyUser,get_provider);
 
 
 

@@ -12,7 +12,7 @@ function allowed_fields(req,res,next){
 }
 
 router.post('/update_profile',verifyUser,allowed_fields,update_profile);
-router.post('/get_patient',verifyUser,get_patient);
+router.get('/get_patient',verifyUser,get_patient);
 router.get('/get_doctor_contacts',verifyUser,get_doctor_contacts);
 
 
