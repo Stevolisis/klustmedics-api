@@ -11,7 +11,7 @@ const resources_route=require('./Routes/health_provider_routes/resources');
 const patient_auth_route=require('./Routes/patient_routes/auth');
 const patient_profile_route=require('./routes/patient_routes/profile')
 const medication_route=require('./Routes/patient_routes/medication');
-const review_route=require('./Routes/review_route/index');
+// const review_route=require('./Routes/review_route/index');
 
 
 
