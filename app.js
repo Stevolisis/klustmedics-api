@@ -15,9 +15,9 @@ const ejs=require("ejs");
 
 
 
-// app.use(formidableMiddleware({multiples: true}));
-// app.use("/media",express.static('media'));
-// app.set('view engine','ejs');
+app.use(formidableMiddleware({multiples: true}));
+app.use("/media",express.static('media'));
+app.set('view engine','ejs');
 
 
 // //routes
