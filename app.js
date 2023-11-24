@@ -40,7 +40,7 @@ app.use('/patient/medication',medication_route);
 mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGO_URI)
   .then(() =>{
-    app.listen(80,(err,res)=>{
+    app.listen(process.env.PORT,(err,res)=>{
         if(err){
             console.log('Error '+ err)
         }else{
