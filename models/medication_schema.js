@@ -1,0 +1,73 @@
+const mongoose=require('mongoose');
+
+const medicationSchema=new mongoose.Schema({
+    patient_id:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'patients',
+        required:true
+    },
+    name:{
+        type:String,
+        required:true
+    },
+    dosage:{
+        type:Number,
+        required:true
+    },
+    type:{
+        type:String,
+        required:true
+    },
+    number_of_pills:{
+        type:Number,
+        required:true
+    },
+    timing:{
+        type:String,
+        required:true
+    },
+    frequency:{
+        type:Number,
+        required:true
+    },
+    time:{
+        type:String,
+        required:true
+    },
+    duration:{
+        type:String,
+        required:true
+    },
+    status:{
+        type:String,
+        required:true
+    },
+    taken:{
+        type:Boolean,
+        required:true
+    },
+    day:{
+        type:String,
+        required:true,
+        immutable:true
+    },
+    month:{
+        type:String,
+        required:true,
+        immutable:true
+    },
+    year:{
+        type:String,
+        required:true,
+        immutable:true
+    },
+    created_at:{
+        type:Date,
+        default:()=>Date.now(),
+        required:true,
+        immutable:true
+    }
+})
+
+//---------------------------------------------------
+module.exports=mongoose.model('medications',medicationSchema);
