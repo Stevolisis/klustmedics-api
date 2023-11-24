@@ -3,6 +3,19 @@ const Providers = require("../../../models/health_provider_schema");
 const Mservice = require('../../../utils/micro_functions');
 
 
+exports.get_patient=async (req,res)=>{
+
+    try{
+        const {id}=req.user;
+        const patient = await Patients.findOne({_id:id});
+        res.status(200).json({status:'success',data:patient});
+        
+    }catch(err){
+        console.log(err);
+        res.status(404).json({status:err.message});
+    }
+}
+
 exports.update_profile=async (req,res)=>{
 
     try{

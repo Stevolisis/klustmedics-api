@@ -7,7 +7,7 @@ exports.register=async (req,res)=>{
         const {full_name,email,phone_number,password}=req.fields;
         const provider_exist=await Providers.findOne({email:email});
         if(provider_exist){
-            res.status(404).json({status:'user exist'});
+            res.status(404).json({status:'User with this email exist'});
             return;
         }
         const date=new Date();

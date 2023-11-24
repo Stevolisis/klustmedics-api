@@ -1,6 +1,6 @@
 var express=require('express');
 const router=express.Router();
-const { update_profile } = require('../../controllers/health_provider_controller/profile/index');
+const { update_profile, get_provider } = require('../../controllers/health_provider_controller/profile/index');
 const { verifyUser } = require('../../middlewares/verifyUser');
 
 function allowed_fields(req,res,next){
@@ -12,6 +12,7 @@ function allowed_fields(req,res,next){
 }
 
 router.post('/update_profile',verifyUser,allowed_fields,update_profile);
+router.post('/get_provider',verifyUser,get_provider);
 
 
 
