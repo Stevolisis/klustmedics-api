@@ -31,7 +31,7 @@ exports.get_patients_count=async (req,res)=>{
     
     try{
         const {id}=req.user;
-        const patients_get_count=await Patients.count({provider_id:id});
+        const patients_get_count=await Patients.countDocuments({provider_id:id});
         res.status(200).json({status:'success',data:patients_get_count});
     }catch(err){
         console.log(err);
@@ -42,7 +42,7 @@ exports.get_patients_count=async (req,res)=>{
 exports.get_all_patients_count=async (req,res)=>{
     
     try{
-        const patients_get_count=await Patients.count({});
+        const patients_get_count=await Patients.countDocuments({});
         res.status(200).json({status:'success',data:patients_get_count});
     }catch(err){
         console.log(err);
