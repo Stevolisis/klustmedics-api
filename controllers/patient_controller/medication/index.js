@@ -69,7 +69,6 @@ exports.edit_medication=async (req,res)=>{
     try{
         let medication_to_edit = req.fields;
         medication_to_edit.updatedAt = Date.now();
-        const { id } = req.user;
 
         await Medications.updateOne({_id:req.params.id},{$set:medication_to_edit});
         res.status(200).json({status:'success'});

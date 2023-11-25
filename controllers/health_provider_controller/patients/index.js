@@ -1,6 +1,19 @@
 const Patients = require("../../../models/patient_schema");
 const Mservice = require('../../../utils/micro_functions');
 
+
+exports.get_all_patients=async (req,res)=>{
+    
+    try{
+        const {limit}=req.params;
+        const patients_get=await Patients.find({}).select('-activation_code').limit(limit).sort({_id:-1});
+        res.status(200).json({status:'success',data:patients_get});
+    }catch(err){
+        console.log(err);
+        res.status(404).json({status:err.message});
+    }
+}
+
 exports.get_patients=async (req,res)=>{
     
     try{

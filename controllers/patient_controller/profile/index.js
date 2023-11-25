@@ -7,7 +7,7 @@ exports.get_patient=async (req,res)=>{
 
     try{
         const {id}=req.user;
-        const patient = await Patients.findOne({_id:id});
+        const patient = await Patients.findOne({_id:id}).select('-activation_code');
         res.status(200).json({status:'success',data:patient});
         
     }catch(err){
