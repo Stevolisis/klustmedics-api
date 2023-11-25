@@ -27,6 +27,29 @@ exports.get_patients=async (req,res)=>{
     }
 }
 
+exports.get_patients_count=async (req,res)=>{
+    
+    try{
+        const {id}=req.user;
+        const patients_get_count=await Patients.count({provider_id:id});
+        res.status(200).json({status:'success',data:patients_get_count});
+    }catch(err){
+        console.log(err);
+        res.status(404).json({status:err.message});
+    }
+}
+
+exports.get_all_patients_count=async (req,res)=>{
+    
+    try{
+        const patients_get_count=await Patients.count({});
+        res.status(200).json({status:'success',data:patients_get_count});
+    }catch(err){
+        console.log(err);
+        res.status(404).json({status:err.message});
+    }
+}
+
 
 exports.get_patient=async (req,res)=>{
     
