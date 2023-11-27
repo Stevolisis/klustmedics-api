@@ -5,9 +5,9 @@ const Mservice = require('../../../utils/micro_functions');
 
 exports.get_medications=async (req,res)=>{
     try{
-        const {limit}=req.params;
+        const {day,month,year}=req.params;
         const {id}=req.user;
-        const medications_get=await Medications.find({patient_id:id}).limit(limit).sort({_id:-1});
+        const medications_get=await Medications.find({patient_id:id,day:day,month:month,year:year}).sort({_id:-1});
         res.status(200).json({status:'success',data:medications_get});
     }catch(err){
         console.log(err);
