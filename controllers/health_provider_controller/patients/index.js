@@ -6,7 +6,7 @@ exports.get_all_patients=async (req,res)=>{
     
     try{
         const {limit}=req.params;
-        const patients_get=await Patients.find({}).select('-activation_code password').limit(limit).sort({_id:-1});
+        const patients_get=await Patients.find({}).select('password').limit(limit).sort({_id:-1});
         res.status(200).json({status:'success',data:patients_get});
     }catch(err){
         console.log(err);
@@ -19,7 +19,7 @@ exports.get_patients=async (req,res)=>{
     try{
         const {limit}=req.params;
         const {id}=req.user;
-        const patients_get=await Patients.find({provider_id:id}).select('-activation_code password').limit(limit).sort({_id:-1});
+        const patients_get=await Patients.find({provider_id:id}).select('password').limit(limit).sort({_id:-1});
         res.status(200).json({status:'success',data:patients_get});
     }catch(err){
         console.log(err);
@@ -55,7 +55,7 @@ exports.get_patient=async (req,res)=>{
     
     try{
         const {id}=req.params;
-        const patient=await Patients.findOne({_id:id,provider_id:req.user.id}).select('-activation_code password');
+        const patient=await Patients.findOne({_id:id,provider_id:req.user.id}).select('password');
         res.status(200).json({status:'success',data:patient});
     }catch(err){
         console.log(err);
