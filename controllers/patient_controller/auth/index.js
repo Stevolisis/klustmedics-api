@@ -17,7 +17,7 @@ exports.login=async(req,res)=>{
         }
 
         await Patients.updateOne({email:email},{$set:{verified:true}});
-        const token = Mservice.generateToken(find_user._id,60*60*24*30);
+        const token = Mservice.generateToken(checking._id,60*60*24*30);
         res.status(202).json({status:'success',data:{token:token}});
 
     }catch(err){
