@@ -6,7 +6,7 @@ exports.get_all_patients=async (req,res)=>{
     
     try{
         const {limit}=req.params;
-        const patients_get=await Patients.find({}).select('-activation_code').limit(limit).sort({_id:-1});
+        const patients_get=await Patients.find({}).select('-activation_code password').limit(limit).sort({_id:-1});
         res.status(200).json({status:'success',data:patients_get});
     }catch(err){
         console.log(err);
@@ -19,7 +19,7 @@ exports.get_patients=async (req,res)=>{
     try{
         const {limit}=req.params;
         const {id}=req.user;
-        const patients_get=await Patients.find({provider_id:id}).select('-activation_code').limit(limit).sort({_id:-1});
+        const patients_get=await Patients.find({provider_id:id}).select('-activation_code password').limit(limit).sort({_id:-1});
         res.status(200).json({status:'success',data:patients_get});
     }catch(err){
         console.log(err);
@@ -55,7 +55,7 @@ exports.get_patient=async (req,res)=>{
     
     try{
         const {id}=req.params;
-        const patient=await Patients.findOne({_id:id,provider_id:req.user.id}).select('-activation_code');
+        const patient=await Patients.findOne({_id:id,provider_id:req.user.id}).select('-activation_code password');
         res.status(200).json({status:'success',data:patient});
     }catch(err){
         console.log(err);
@@ -71,7 +71,8 @@ exports.add_patient=async (req,res)=>{
         const { id } = req.user;
         const user_exist = await Patients.findOne({email:email});
         const date=new Date();
-        const activation_code = Mservice.randomFixedInteger(6);
+        const temporary_password = Mservice.randomFixedInteger(7);
+        const hashed_password = await Mservice.hashPassword(temporary_password);
         console.log(user_exist);
 
         if(user_exist){
@@ -88,13 +89,13 @@ exports.add_patient=async (req,res)=>{
             gender:gender,
             status:'active',
             verified:false,
-            activation_code:activation_code,
+            password:temporary_password,
             day:date.getDate(),
             month:date.getMonth()+1,
             year:date.getFullYear()
         });
         await Mservice.sendMail('welcome2','Welcome to KlustMedics', email, { name:full_name });
-        await Mservice.sendMail('passcode','Activate your account', email, { name:full_name, passcode:activation_code });
+        await Mservice.sendMail('passcode','Activate your account', email, { name:full_name, passcode:temporary_password });
         await new_patient.save();
         res.status(200).json({status:'success'});
 

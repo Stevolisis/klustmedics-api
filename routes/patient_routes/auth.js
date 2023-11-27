@@ -1,8 +1,8 @@
 var express=require('express');
 const router=express.Router();
-const { account_activation } = require('../../controllers/patient_controller/auth/index');
+const { login } = require('../../controllers/patient_controller/auth/index');
 
 
-router.post('/account_activation',account_activation);
+router.post('/login',login);
 
 module.exports=router;

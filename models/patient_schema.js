@@ -46,10 +46,10 @@ const patientSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    // token:{
-    //     type:String,
-    //     required:true
-    // },
+    password:{
+        type:String,
+        required:true
+    },
     verified:Boolean,
     day:{
         type:String,
