@@ -1,7 +1,7 @@
 const Medications = require("../../../models/medication_schema");
 
 
-exports.get_medication=async (req,res)=>{
+exports.get_medications=async (req,res)=>{
     try{
         const { id }=req.params;
         const medications_get=await Medications.findOne({patient_id:id}).sort({_id:-1});
