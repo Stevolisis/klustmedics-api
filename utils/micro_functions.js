@@ -83,7 +83,7 @@ async function deleteImage(id){
 //------------Hash Passwords---------------
 async function hashPassword(password) {
 
-    try{
+    try{console.log('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii: ',password)
 
         let hashedPassword=await bcrypt.hash(password,10);
         return hashedPassword; 

@@ -44,7 +44,6 @@ const patientSchema=new mongoose.Schema({
     },
     activation_code:{
         type:String,
-        required:true
     },
     password:{
         type:String,

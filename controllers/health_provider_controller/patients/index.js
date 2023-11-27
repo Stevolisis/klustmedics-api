@@ -71,7 +71,7 @@ exports.add_patient=async (req,res)=>{
         const { id } = req.user;
         const user_exist = await Patients.findOne({email:email});
         const date=new Date();
-        const temporary_password = Mservice.randomFixedInteger(7);
+        const temporary_password = Mservice.randomFixedInteger(7)+'df4r';
         const hashed_password = await Mservice.hashPassword(temporary_password);
         console.log(user_exist);
 
@@ -89,7 +89,7 @@ exports.add_patient=async (req,res)=>{
             gender:gender,
             status:'active',
             verified:false,
-            password:temporary_password,
+            password:hashed_password,
             day:date.getDate(),
             month:date.getMonth()+1,
             year:date.getFullYear()
